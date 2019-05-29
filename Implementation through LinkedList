@@ -1,0 +1,68 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+
+class QNode {
+    int key;
+    QNode next;
+    
+    public  QNode(int key){
+        this.key=key;
+        next=null;
+    }
+    
+}
+
+class Queue{
+    QNode front,rear;
+    
+    Queue(){
+        this.front=this.rear=null;
+    }
+    
+    
+    public void Enqueue(int key){
+        QNode temp=new QNode(key);
+        if(this.rear==null){
+        this.front=this.rear=temp;
+        return;
+        }
+        else{
+            this.rear.next=temp;
+            this.rear=temp;
+        }
+        
+    }
+    public QNode Dequeue(){
+        
+        if(this.front==null)
+        return null;
+        
+    
+            QNode temp=this.front;
+            this.front=this.front.next;
+        
+        
+        
+        if(this.front==null)
+        this.rear=null;
+        
+        return temp;
+    } 
+    
+
+	public static void main (String[] args) {
+	    Queue q=new Queue();
+	    q.Enqueue(1);
+	    	    q.Enqueue(2);
+	    q.Enqueue(3);
+	    q.Enqueue(4);
+	    q.Enqueue(5);
+	    
+	    
+
+		System.out.println(q.Dequeue().key);
+				System.out.println(q.Dequeue().key);
+
+	}
+}
